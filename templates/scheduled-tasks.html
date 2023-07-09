@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .container {
+            --text-color: #000000;
+            --bg-color: #EEEEEE;
+            --link-color: #068FFF;
+            --tag-color: #4E4FEB;
+        }
+
+        body {
+            color: var(--text-color);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 1.125rem;
+            position: relative;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .notice-type {
+            color: var(--tag-color);
+            font-size: 1.125rem;
+        }
+
+        .tasks {
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .task-result {
+            padding: .75rem 1.5rem;
+            background-color: var(--bg-color);
+            border-radius: .125rem;
+            min-width: 15rem;
+            aspect-ratio: 1/0.618;
+        }
+
+        .extra {
+            margin-top: 3rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .link {
+            color: var(--link-color);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>
+        <span>定时任务执行报告</span>
+        {% if is_extra_notice %}
+            <small class="notice-type">额外通知</small>
+        {% endif %}
+    </h2>
+    <div class="tasks">
+        {% for task in tasks %}
+            <div class="task-result">
+                <h3>{{ task.topic }}</h3>
+                <p><small>{{ task.msg }}</small></p>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="extra">
+        <div>技术支持： <a class="link" href="https://github.com/yinzsw/xxx">Github</a></div>
+        <div>联系我： <a class="link" href="mailto:yinzsw@qq.com">yinzsW</a></div>
+    </div>
+</div>
+</body>
+</html>
+
