@@ -23,11 +23,4 @@ jobs:
         env:
           SMTP: ${{ secrets.SMTP }}
           TASKS: ${{ secrets.TASKS }}
-        run: |
-          python main.py >> ./run.log
-          tail run.log
-      - name: 'auto commit'
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 'auto tasks'
-          branch: main
+        run: python main.py
